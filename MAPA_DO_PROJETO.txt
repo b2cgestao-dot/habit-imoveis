@@ -1,0 +1,62 @@
+# MAPA DO PROJETO - HABIT IMOBILIÁRIA PREMIUM
+
+== 1. STACK DO PROJETO ==
+Este projeto foi construído utilizando:
+- Vite (como bundler e servidor de desenvolvimento ultra-rápido).
+- React (biblioteca principal).
+- TypeScript (tipagem estática para maior segurança).
+- Tailwind CSS (para toda a estilização e design responsivo).
+- Lucide React (biblioteca de ícones minimalistas).
+- GSAP (instalado para futuras animações complexas, conforme as regras de negócio).
+
+== 2. ÁRVORE DE PASTAS ==
+/
+├── public/                 <- (Coloque suas imagens, logotipos e favicons aqui)
+├── src/
+│   ├── components/         <- (Onde ficam os blocos da sua Landing Page)
+│   │   ├── Cabecalho.tsx
+│   │   ├── SecaoHero.tsx
+│   │   ├── SecaoDiferenciais.tsx
+│   │   ├── ImoveisDestaque.tsx
+│   │   ├── SecaoProvaSocial.tsx
+│   │   ├── FormularioContatoAgressivo.tsx
+│   │   └── Rodape.tsx
+│   ├── App.tsx             <- (O maestro: ele empilha e organiza todos os componentes)
+│   ├── main.tsx            <- (Ponto de entrada do React)
+│   └── index.css           <- (Onde o Tailwind é importado e fontes globais definidas)
+├── package.json            <- (Lista de todas as dependências do projeto)
+├── tailwind.config.js      <- (Configurações e personalização do design system)
+└── vite.config.ts          <- (Configuração do servidor de desenvolvimento)
+
+== 3. ONDE ALTERAR CADA COISA ==
+
+* AS CORES GLOBAIS:
+Para mudar o "Verde Habit", você pode usar o "Replace em Lote" no seu editor para trocar todos os `emerald-500` pela nova cor desejada, ou configurar no `tailwind.config.js` dentro de `theme: { extend: { colors: { habit: '#SUACOR' } } }` e depois usar `bg-habit` nos arquivos.
+
+* O NÚMERO DO WHATSAPP:
+Abra `src/components/Cabecalho.tsx` e altere o número no link `href="https://wa.me/..."`.
+Abra `src/components/FormularioContatoAgressivo.tsx` caso queira mudar a promessa do botão final.
+
+* OS TEXTOS DA HERO (A PROMESSA):
+Abra `src/components/SecaoHero.tsx`. Todo o título "Encontre o Lar dos Seus Sonhos" e subtítulo estão em texto puro de fácil acesso.
+
+* AS FOTOS E VALORES DOS IMÓVEIS:
+Abra `src/components/ImoveisDestaque.tsx`. Logo no início do arquivo existe um "array" constante chamado `imoveis`. Altere as URLs das imagens, os títulos, preços e números de quartos diretamente nesta lista.
+
+* O RODAPÉ (CNPJ E CRECI):
+Abra `src/components/Rodape.tsx`. Altere os textos `00.000.000/0001-00` e o CRECI que está lá para refletir os reais.
+
+== 4. COMO CRIAR OU REMOVER UMA SEÇÃO NO FUTURO ==
+
+PARA REMOVER:
+1. Vá em `src/App.tsx`.
+2. Delete a linha de `import` do componente que deseja remover.
+3. Delete o `<NomeDoComponente />` dentro do bloco `return`.
+4. (Opcional) Delete o arquivo `.tsx` dele na pasta `src/components/`.
+
+PARA ADICIONAR:
+1. Crie um novo arquivo `.tsx` na pasta `src/components/` (ex: `SecaoEquipe.tsx`).
+2. Escreva o seu código React utilizando o Tailwind.
+3. Vá em `src/App.tsx`.
+4. Adicione o `import SecaoEquipe from './components/SecaoEquipe';` no topo.
+5. Coloque `<SecaoEquipe />` na posição desejada (exemplo: logo abaixo do Hero).

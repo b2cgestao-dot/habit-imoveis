@@ -5,8 +5,7 @@ export const leadSchema = z.object({
   email: z.string().email('Por favor, insira um e-mail válido.'),
   telefone: z.string().length(11, 'O WhatsApp deve ter exatamente 11 números (com DDD).'),
   tipo_imovel: z.enum(['Casa', 'Apartamento'], {
-    invalid_type_error: 'Selecione uma opção válida.',
-    required_error: 'Por favor, selecione o tipo de imóvel.',
+    message: 'Por favor, selecione o tipo de imóvel.'
   })
 });
 

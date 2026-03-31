@@ -1,4 +1,10 @@
+import { useRef } from 'react';
 import { Star } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const depoimentos = [
   {
@@ -48,10 +54,37 @@ const GoogleIcon = () => (
 );
 
 const SecaoProvaSocial = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    tl.fromTo('.prova-title',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+    tl.fromTo('.prova-card',
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out' },
+      '-=0.6'
+    );
+    tl.fromTo('.prova-star',
+      { scale: 0, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.4, stagger: 0.05, ease: 'back.out(1.7)' },
+      '-=0.8'
+    );
+  }, { scope: sectionRef });
+
   return (
-    <section id="depoimentos" className="py-24 md:py-32 bg-gray-50">
+    <section id="depoimentos" ref={sectionRef} className="py-24 md:py-32 bg-gray-50">
       <div className="container mx-auto px-6 max-w-7xl">
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-16 md:mb-20 prova-title">
           <h2 className="text-3xl md:text-5xl font-medium text-slate-900 tracking-tight mb-6 leading-tight">
             Validação de Quem Importa: <span className="text-emerald-500 block md:inline mt-2 md:mt-0">Nossos Clientes</span>
           </h2>
@@ -62,13 +95,12 @@ const SecaoProvaSocial = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {depoimentos.map((item, index) => (
-            <div key={index} className="flex flex-col bg-white p-6 md:p-8 rounded-2xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-all duration-300">
-              {/* Header do Google Card */}
+            <div key={index} className="prova-card flex flex-col bg-white p-6 md:p-8 rounded-2xl shadow-[0_4px_15px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)] transition-shadow duration-300">              {/* Header do Google Card */}
               <div className="flex items-center gap-4 mb-4">
                 {item.image ? (
-                  <img 
-                    src={item.image} 
-                    alt={item.author} 
+                  <img
+                    src={item.image}
+                    alt={item.author}
                     className="w-12 h-12 rounded-full object-cover shadow-sm shrink-0 border border-gray-100"
                   />
                 ) : (
@@ -86,7 +118,7 @@ const SecaoProvaSocial = () => {
               {/* Estrelas */}
               <div className="flex items-center gap-1 mb-4 w-full">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 text-[#FBBC05] fill-[#FBBC05]" />
+                  <Star key={i} className="prova-star w-4 h-4 text-[#FBBC05] fill-[#FBBC05]" />
                 ))}
               </div>
 

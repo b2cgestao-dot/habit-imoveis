@@ -1,29 +1,13 @@
-
-import Cabecalho from './components/Cabecalho';
-import SecaoHero from './components/SecaoHero';
-import SecaoClientesFelizes from './components/SecaoClientesFelizes';
-import SecaoDiferenciais from './components/SecaoDiferenciais';
-import SecaoSobre from './components/SecaoSobre';
-import ImoveisDestaque from './components/ImoveisDestaque';
-import SecaoProvaSocial from './components/SecaoProvaSocial';
-import FormularioContatoAgressivo from './components/FormularioContatoAgressivo';
-import Rodape from './components/Rodape';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './pages/LandingPage';
+import Obrigado from './pages/Obrigado';
 
 function App() {
   return (
-    <div className="font-sans antialiased text-slate-900 bg-white">
-      <Cabecalho />
-      <main>
-        <SecaoHero />
-        <SecaoClientesFelizes />
-        <SecaoDiferenciais />
-        <SecaoSobre />
-        <ImoveisDestaque />
-        <SecaoProvaSocial />
-        <FormularioContatoAgressivo />
-      </main>
-      <Rodape />
-    </div>
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/obrigado" element={<Obrigado />} />
+    </Routes>
   );
 }
 

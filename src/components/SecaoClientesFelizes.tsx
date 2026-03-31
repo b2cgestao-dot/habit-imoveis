@@ -1,3 +1,10 @@
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const imagensClientes = [
   "/clientes/Clientes (1).jpg",
   "/clientes/Clientes (2).jpg",
@@ -14,12 +21,27 @@ const imagensClientes = [
 ];
 
 const SecaoClientesFelizes = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  
+  useGSAP(() => {
+    gsap.fromTo('.blur-reveal', 
+      { opacity: 0, filter: 'blur(15px)' },
+      { opacity: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.blur-reveal',
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+  }, { scope: sectionRef });
+
   // Duplicar o array para que o CSS Marquee rode de forma 100% contínua e perfeita
   const carouselItems = [...imagensClientes, ...imagensClientes];
 
   return (
-    <section className="py-16 md:py-24 bg-white overflow-hidden border-b border-gray-100">
-      <div className="container mx-auto px-6 mb-12 text-center">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-white overflow-hidden border-b border-gray-100">
+      <div className="container mx-auto px-6 mb-12 text-center blur-reveal">
         <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-slate-900">
           Quem já Realizou o <span className="text-emerald-500">Sonho da Casa Própria</span>
         </h2>

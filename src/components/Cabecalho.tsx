@@ -1,12 +1,41 @@
-
+import { useRef } from 'react';
 import { MessageCircle, Menu } from 'lucide-react';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 const Cabecalho = () => {
+  const headerRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    // Logo Slide Down
+    gsap.fromTo('.logo-anim', 
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    );
+
+    // Button Fade In + Pulse Glow
+    gsap.fromTo('.btn-vip-anim', 
+      { opacity: 0, scale: 0.95 },
+      { opacity: 1, scale: 1, duration: 1.2, delay: 0.3, ease: 'power3.out',
+        onComplete: () => {
+          // Continuous Glow Pulse
+          gsap.to('.btn-vip-anim', {
+            boxShadow: '0 0 25px rgba(16, 185, 129, 0.6)',
+            repeat: -1,
+            yoyo: true,
+            duration: 2,
+            ease: 'sine.inOut'
+          });
+        }
+      }
+    );
+  }, { scope: headerRef });
+
   return (
-    <header className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 bg-slate-800/85 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl flex items-center justify-between transition-all duration-300">
+    <header ref={headerRef} className="fixed top-4 md:top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 bg-slate-800/85 backdrop-blur-xl border border-white/10 rounded-full px-6 md:px-8 py-3 shadow-2xl flex items-center justify-between transition-all duration-300">
 
       {/* Logo */}
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-3 logo-anim">
         <img src="/julioingrato.png" alt="Habit Imobiliária" className="h-10 w-auto object-contain" />
       </div>
 
@@ -22,7 +51,7 @@ const Cabecalho = () => {
           href="https://wa.me/5575983248332"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 shadow-[0_4px_15px_-5px_rgba(16,185,129,0.5)] hover:shadow-[0_8px_20px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-0.5"
+          className="btn-vip-anim flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-6 py-2.5 rounded-full font-medium text-sm transition-all duration-300 shadow-[0_4px_15px_-5px_rgba(16,185,129,0.5)] hover:shadow-[0_8px_20px_-5px_rgba(16,185,129,0.6)] hover:-translate-y-0.5"
         >
           <MessageCircle className="w-4 h-4" />
           <span>Atendimento VIP</span>

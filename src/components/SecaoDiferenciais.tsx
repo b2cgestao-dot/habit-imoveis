@@ -1,26 +1,58 @@
+import { useRef } from 'react';
 import { Target, Zap, ShieldCheck } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const diferenciais = [
   {
-    icon: <Zap className="w-12 h-12 text-emerald-500 mb-6" />,
+    icon: <Zap className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,
     title: 'Aprovação Acelerada',
     description: 'Esqueça a morosidade bancária. Validamos seu crédito de forma inteligente e ágil para o seu perfil.'
   },
   {
-    icon: <Target className="w-12 h-12 text-emerald-500 mb-6" />,
+    icon: <Target className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,
     title: 'Parcelas Desenhadas',
     description: 'Buscamos estruturas de pagamento que se ajustam à sua realidade financeira.'
   },
   {
-    icon: <ShieldCheck className="w-12 h-12 text-emerald-500 mb-6" />,
+    icon: <ShieldCheck className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,
     title: 'Garantia Estrutural',
     description: 'Imóveis rigorosamente avaliados. Compre com a segurança total do seu patrimônio.'
   }
 ];
 
 const SecaoDiferenciais = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    tl.fromTo('.diff-title', 
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
+    )
+    .fromTo('.diff-card', 
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out' }, 
+      '-=0.5'
+    )
+    .fromTo('.differential-icon', 
+      { scale: 0, rotation: -10 },
+      { scale: 1, rotation: 0, duration: 0.8, stagger: 0.15, ease: 'back.out(1.7)' }, 
+      '-=0.8'
+    );
+  }, { scope: sectionRef });
   return (
-    <section id="diferenciais" className="py-24 md:py-32 bg-[#F3F4F6]">
+    <section id="diferenciais" ref={sectionRef} className="py-24 md:py-32 bg-[#F3F4F6]">
       {/* CSS injetado exatamente do Uiverse com as cores atualizadas e adaptado para manter a responsividade */}
       <style dangerouslySetInnerHTML={{
         __html: `
@@ -94,7 +126,7 @@ const SecaoDiferenciais = () => {
       `}} />
 
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 diff-title">
           <h2 className="text-3xl md:text-5xl font-medium text-slate-900 tracking-tight mb-6 leading-tight">
             O Caminho Mais Seguro Até a Sua Nova Casa
           </h2>
@@ -106,7 +138,7 @@ const SecaoDiferenciais = () => {
         {/* Usando o flex-wrap com a div wrapper para o CSS isolado funcionar */}
         <div className="diferenciais-wrapper flex flex-wrap justify-center gap-8 md:gap-12 max-w-6xl mx-auto">
           {diferenciais.map((item, index) => (
-            <div key={index} className="card">
+            <div key={index} className="card diff-card">
               <div className="blob"></div>
               <div className="bg">
                 {item.icon}

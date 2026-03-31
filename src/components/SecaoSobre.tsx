@@ -1,29 +1,74 @@
+import { useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(ScrollTrigger);
+
 const SecaoSobre = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    // Split Fade-in
+    gsap.fromTo('.sobre-image', 
+      { x: -50, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre-image',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    gsap.fromTo('.sobre-text', 
+      { x: 50, opacity: 0 },
+      { x: 0, opacity: 1, duration: 1.2, ease: 'power3.out',
+        scrollTrigger: {
+          trigger: '.sobre-text',
+          start: 'top 80%',
+          toggleActions: 'play none none reverse'
+        }
+      }
+    );
+
+    // Parallax effect on image
+    gsap.to('.sobre-image-parallax', {
+      y: -40,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.sobre-image',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: true
+      }
+    });
+  }, { scope: sectionRef });
   return (
-    <section id="sobre" className="py-24 md:py-32 bg-white">
+    <section id="sobre" ref={sectionRef} className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-6 max-w-7xl">
         <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
           {/* Imagem Esquerda */}
-          <div className="w-full md:w-1/2">
+          <div className="w-full md:w-1/2 sobre-image">
             {/* Removi shadow, bg-colors, e overflow-hidden que estavam criando a "caixa fantasma".
               Deixei apenas a formatação relativa e a animação do grupo.
             */}
-            <div className="relative group">
+            <div className="relative group overflow-hidden rounded-[2.5rem]">
               <img
                 src="/habitsv1.png"
                 alt="Equipe Habit Imóveis"
                 // Removi object-cover pois ele pode forçar o corte da imagem, 
                 // e adicionei rounded-t-[2.5rem] para arredondar apenas o topo,
                 // deixando a base esmaecida fluir livremente sem recortes.
-                className="w-full h-auto rounded-t-[2.5rem] group-hover:scale-105 transition-transform duration-700 ease-out"
+                className="w-full h-auto sobre-image-parallax group-hover:scale-105 transition-transform duration-700 ease-out"
               />
               {/* O overlay estava escurecendo o seu esmaecimento, eu o suavizei. Se não quiser, pode remover essa linha. */}
-              <div className="absolute inset-0 bg-emerald-900/5 mix-blend-overlay rounded-t-[2.5rem] pointer-events-none"></div>
+              <div className="absolute inset-0 bg-emerald-900/5 mix-blend-overlay pointer-events-none"></div>
             </div>
           </div>
 
           {/* Texto Direita */}
-          <div className="w-full md:w-1/2 text-left">
+          <div className="w-full md:w-1/2 text-left sobre-text">
             <h2 className="text-3xl md:text-5xl font-medium text-slate-900 tracking-tight mb-8 leading-tight">
               A imobiliária que descomplica o seu sonho
             </h2>

@@ -42,7 +42,7 @@ const SecaoHero = () => {
       delay: 3 // Espera as animações iniciais terminarem
     });
 
-    words.forEach((_, i) => {
+    words.forEach(() => {
       tl.to(textRef.current, {
         opacity: 0,
         y: 10,

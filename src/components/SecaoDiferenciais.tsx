@@ -14,8 +14,8 @@ const diferenciais = [
   },
   {
     icon: <Target className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,
-    title: 'Parcelas Desenhadas',
-    description: 'Buscamos estruturas de pagamento que se ajustam à sua realidade financeira.'
+    title: 'Parcela Que Cabe no Bolso',
+    description: 'Nós buscamos condições de pagamento que fazem sentido pra sua renda, sem apertar seu orçamento.'
   },
   {
     icon: <ShieldCheck className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,
@@ -36,20 +36,20 @@ const SecaoDiferenciais = () => {
       }
     });
 
-    tl.fromTo('.diff-title', 
+    tl.fromTo('.diff-title',
       { y: 30, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }
     )
-    .fromTo('.diff-card', 
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out' }, 
-      '-=0.5'
-    )
-    .fromTo('.differential-icon', 
-      { scale: 0, rotation: -10 },
-      { scale: 1, rotation: 0, duration: 0.8, stagger: 0.15, ease: 'back.out(1.7)' }, 
-      '-=0.8'
-    );
+      .fromTo('.diff-card',
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, stagger: 0.15, ease: 'power3.out' },
+        '-=0.5'
+      )
+      .fromTo('.differential-icon',
+        { scale: 0, rotation: -10 },
+        { scale: 1, rotation: 0, duration: 0.8, stagger: 0.15, ease: 'back.out(1.7)' },
+        '-=0.8'
+      );
   }, { scope: sectionRef });
   return (
     <section id="diferenciais" ref={sectionRef} className="py-24 md:py-32 bg-[#F3F4F6]">
@@ -128,10 +128,10 @@ const SecaoDiferenciais = () => {
       <div className="container mx-auto px-6">
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 diff-title">
           <h2 className="text-3xl md:text-5xl font-medium text-slate-900 tracking-tight mb-6 leading-tight">
-            O Caminho Mais Seguro Até a Sua Nova Casa
+            O Caminho Mais Seguro Até o seu primeiro Imóvel
           </h2>
           <p className="text-lg md:text-xl text-gray-500 font-extralight leading-relaxed">
-            Eliminamos a incerteza durante o processo de compra, garantindo agilidade e proteção do seu patrimônio desde o primeiro clique.
+            Comprar seu primeiro imóvel não precisa ser um bicho de sete cabeças. A gente te mostra o caminho e caminha junto com você.
           </p>
         </div>
 

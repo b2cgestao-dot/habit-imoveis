@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const LeadForm = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  
+
   const {
     formData,
     errors,
@@ -30,15 +30,15 @@ const LeadForm = () => {
       }
     });
 
-    tl.fromTo('.form-title-mask', 
+    tl.fromTo('.form-title-mask',
       { y: 100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1.2, ease: 'power4.out' }
     )
-    .fromTo('.form-container', 
-      { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 
-      '-=0.8'
-    );
+      .fromTo('.form-container',
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, ease: 'power3.out' },
+        '-=0.8'
+      );
   }, { scope: sectionRef });
 
   return (
@@ -59,12 +59,12 @@ const LeadForm = () => {
 
         <div className="form-container bg-slate-800/60 backdrop-blur-xl p-8 md:p-12 rounded-[2rem] shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-white/10 text-left relative z-20">
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <FormFields 
-              formData={formData} 
-              errors={errors} 
+            <FormFields
+              formData={formData}
+              errors={errors}
               isLoading={isLoading}
-              onChange={handleInputChange} 
-              onPhoneChange={handlePhoneChange} 
+              onChange={handleInputChange}
+              onPhoneChange={handlePhoneChange}
             />
 
             {submitError && (
@@ -73,12 +73,12 @@ const LeadForm = () => {
               </div>
             )}
 
-            <button 
+            <button
               type="submit"
               disabled={isLoading}
               className={`w-full flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 active:scale-[0.98] text-white px-6 py-5 rounded-xl font-medium text-xl md:text-2xl transition-all duration-300 mt-10 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.4)] ${isLoading ? 'opacity-70 cursor-not-allowed hover:-translate-y-0' : 'hover:-translate-y-1'}`}
             >
-              <span>{isLoading ? 'Processando...' : 'Agendar Minha Consultoria Gratuita'}</span>
+              <span>{isLoading ? 'Processando...' : 'Falar com Especialista'}</span>
               {!isLoading && <MousePointerClick className="w-6 h-6" />}
             </button>
             <div className="flex justify-center items-center gap-2 text-xs md:text-sm text-gray-500 pt-5">

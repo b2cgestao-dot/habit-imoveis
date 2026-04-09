@@ -96,13 +96,13 @@ const SecaoHero = () => {
 
           <a href="#contato" className="hero-cta flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-white px-8 md:px-10 py-4 rounded-md font-medium text-lg md:text-xl transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.5)] w-full sm:w-auto">
             <MessageCircle className="w-6 h-6" />
-            <span>Dar o Primeiro Passo</span>
+            <span>Seja atendido Agora</span>
           </a>
 
           <div className="mt-12 flex items-center justify-center gap-3 text-xs md:text-sm text-gray-400 font-extralight tracking-wide uppercase">
             <span className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)] animate-pulse"></span>
-              Equipe de crédito online agora
+              Equipe de Corretores Online agora
             </span>
           </div>
         </div>

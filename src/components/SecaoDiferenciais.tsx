@@ -10,7 +10,7 @@ const diferenciais = [
   {
     icon: <Zap className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,
     title: 'Aprovação Acelerada',
-    description: 'Esqueça a morosidade bancária. Validamos seu crédito de forma inteligente e ágil para o seu perfil.'
+    description: 'Nada de esperar meses pelo banco. A gente agiliza sua aprovação de crédito em tempo recorde.'
   },
   {
     icon: <Target className="differential-icon w-12 h-12 text-emerald-500 mb-6" />,

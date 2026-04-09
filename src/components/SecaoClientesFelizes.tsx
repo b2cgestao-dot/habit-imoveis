@@ -22,11 +22,12 @@ const imagensClientes = [
 
 const SecaoClientesFelizes = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  
+
   useGSAP(() => {
-    gsap.fromTo('.blur-reveal', 
+    gsap.fromTo('.blur-reveal',
       { opacity: 0, filter: 'blur(15px)' },
-      { opacity: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power2.out',
+      {
+        opacity: 1, filter: 'blur(0px)', duration: 1.5, ease: 'power2.out',
         scrollTrigger: {
           trigger: '.blur-reveal',
           start: 'top 85%',
@@ -45,7 +46,7 @@ const SecaoClientesFelizes = () => {
         <h2 className="text-2xl md:text-4xl font-medium tracking-tight text-slate-900">
           Quem já Realizou o <span className="text-emerald-500">Sonho da Casa Própria</span>
         </h2>
-        <p className="text-gray-500 font-extralight mt-4 text-lg">Famílias reais que confiaram na Habit.</p>
+        <p className="text-gray-500 font-extralight mt-4 text-lg">Mais de 1.500 chaves entregues. A próxima pode ser a sua.</p>
       </div>
 
       <div className="relative w-full overflow-hidden">
@@ -56,9 +57,9 @@ const SecaoClientesFelizes = () => {
         <div className="flex animate-marquee pt-2 pb-8">
           {carouselItems.map((imgSrc, index) => (
             <div key={index} className="flex-shrink-0 w-64 h-80 md:w-80 md:h-[450px] mx-4 rounded-3xl overflow-hidden shadow-[0_8px_25px_rgba(0,0,0,0.08)] border border-gray-100">
-              <img 
-                src={imgSrc} 
-                alt={`Cliente Habit Feliz ${index}`} 
+              <img
+                src={imgSrc}
+                alt={`Cliente Habit Feliz ${index}`}
                 className="w-full h-full object-cover rounded-3xl"
               />
             </div>
@@ -68,7 +69,7 @@ const SecaoClientesFelizes = () => {
         {/* Central CTA Button */}
         <div className="container mx-auto px-6 mt-12 md:mt-16 flex justify-center relative z-20">
           <a href="#contato" className="flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-white px-8 md:px-10 py-4 rounded-full font-medium text-lg md:text-xl transition-all duration-300 transform hover:-translate-y-1 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.5)] hover:shadow-[0_25px_45px_-10px_rgba(16,185,129,0.6)] w-full sm:w-auto">
-            <span>Quero Segurar a Minha Chave</span>
+            <span>Quero Realizar meu Sonho</span>
           </a>
         </div>
       </div>

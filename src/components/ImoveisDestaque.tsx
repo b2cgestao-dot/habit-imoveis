@@ -8,30 +8,30 @@ gsap.registerPlugin(ScrollTrigger);
 
 const imoveis = [
   {
-    image: 'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Casa Condomínio Fechado',
-    location: 'Bairro Artemia Pires, Feira de Santana',
+    image: '/atlanta.jpg',
+    title: 'Condomínio Atlanta',
+    location: 'Bairro SIM, Feira de Santana',
     price: 'Oportunidade',
     beds: 3
   },
   {
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Apartamento Funcional',
+    image: "/uptech.jpg",
+    title: 'UP Tech',
     location: 'Bairro SIM, Feira de Santana',
     price: 'Aprovamos Crédito',
     beds: 2
   },
   {
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Casa Solta com Quintal',
-    location: 'Papagaio, Feira de Santana',
+    image: '/ValeDoRubi.avif',
+    title: 'Condominio Vale do Rubi',
+    location: 'Mangabeira, Feira de Santana',
     price: 'Excelente Valor',
     beds: 3
   },
   {
-    image: 'https://images.unsplash.com/photo-1628624747186-a941c476b7ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-    title: 'Duplex Moderno',
-    location: 'Santa Mônica, Feira de Santana',
+    image: '/uniqsossego.jpg',
+    title: 'Unique Sossêgo',
+    location: 'Bairro SIM, Feira de Santana',
     price: 'Alto Padrão',
     beds: 4
   }

@@ -91,7 +91,7 @@ const SecaoHero = () => {
           </div>
 
           <p className="hero-subtitle text-lg md:text-xl text-gray-300 font-extralight mb-12 max-w-3xl leading-relaxed">
-            Seu sonho da casa própria mais perto do que você imagina. A gente cuida de toda a burocracia e encontra a melhor condição pra você.
+            Seu sonho da casa própria mais perto do que você imagina. A gente cuida de toda a burocracia e encontra a melhor condição para você.
           </p>
 
           <a href="#contato" className="hero-cta flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-white px-8 md:px-10 py-4 rounded-md font-medium text-lg md:text-xl transition-all duration-300 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.5)] w-full sm:w-auto">

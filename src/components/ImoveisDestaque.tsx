@@ -30,9 +30,9 @@ const imoveis = [
   },
   {
     image: '/uniqsossego.jpg',
-    title: 'Unique Sossêgo',
+    title: 'Uniq Sossêgo',
     location: 'Bairro SIM, Feira de Santana',
-    price: 'Alto Padrão',
+    price: 'Médio Padrão',
     beds: 4
   }
 ];

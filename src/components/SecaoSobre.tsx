@@ -74,7 +74,7 @@ const SecaoSobre = () => {
             </h2>
             <div className="space-y-6 text-lg md:text-xl text-gray-500 font-extralight leading-relaxed">
               <p>
-                A Habit Imóveis é uma imobiliária fundada em 2020 e já ajudou mais de 1.000 famílias em Feira de Santana e Salvador a realizarem o sonho da casa própria.
+                A Habit Imóveis é uma imobiliária fundada em 2020 e já ajudou mais de 1.500 famílias em Feira de Santana e Salvador a realizarem o sonho da casa própria.
               </p>
               <p>
                 Trabalhamos com vendas, locação, imóveis prontos, lançamentos e consultoria para quem deseja morar bem ou investir com segurança. Oferecemos atendimento humanizado, análise de perfil, visitas agendadas e suporte em todas as etapas da negociação.

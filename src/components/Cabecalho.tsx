@@ -37,7 +37,7 @@ const Cabecalho = () => {
 
       {/* Logo */}
       <div className="flex items-center gap-3 logo-anim">
-        <img src="/julioingrato.png" alt="Habit Imobiliária" className="h-10 w-auto object-contain" />
+        <img src="/habit.png" alt="Habit Imobiliária" className="h-10 w-auto object-contain" />
       </div>
 
       {/* Desktop Actions */}

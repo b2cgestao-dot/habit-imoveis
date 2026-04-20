@@ -8,9 +8,9 @@ const Rodape = () => {
           {/* Info Esquerda */}
           <div className="flex flex-col">
             <div className="flex items-center gap-3 mb-8">
-              <img src="/julioingrato.png" alt="Habit Imobiliária" className="h-12 w-auto object-contain" />
+              <img src="/habit.png" alt="Habit Imobiliária" className="h-12 w-auto object-contain" />
             </div>
-            
+
             <p className="text-gray-400 font-extralight mb-8 text-sm md:text-base leading-relaxed">
               A Habit Imóveis já ajudou mais de 1.000 famílias em Feira de Santana e Salvador a realizarem o sonho da casa própria. Atendimento humanizado e suporte em todas as etapas da negociação.
             </p>
@@ -35,11 +35,11 @@ const Rodape = () => {
 
           {/* Mapa Direita */}
           <div className="w-full h-[300px] lg:h-auto min-h-[300px] rounded-[2rem] overflow-hidden shadow-2xl border border-white/10">
-            <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.375873354459!2d-38.952187099999996!3d-12.2228096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7143996d2d235a9%3A0xd6ab516f72dbf863!2sHabit%20Im%C3%B3veis!5e0!3m2!1spt-BR!2sbr!4v1774638907812!5m2!1spt-BR!2sbr" 
-              className="w-full h-full border-0" 
-              allowFullScreen={false} 
-              loading="lazy" 
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3899.375873354459!2d-38.952187099999996!3d-12.2228096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7143996d2d235a9%3A0xd6ab516f72dbf863!2sHabit%20Im%C3%B3veis!5e0!3m2!1spt-BR!2sbr!4v1774638907812!5m2!1spt-BR!2sbr"
+              className="w-full h-full border-0"
+              allowFullScreen={false}
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade">
             </iframe>
           </div>

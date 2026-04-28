@@ -1,12 +1,10 @@
 import { z } from 'zod';
 
 export const leadSchema = z.object({
-  nome: z.string().min(3, "O nome deve ter no mínimo 3 letras."),
+  nome: z.string().min(2, "O nome deve ter no mínimo 2 letras.").max(120, "O nome deve ter no máximo 120 letras."),
   email: z.string().email("Por favor, insira um e-mail válido."),
-  telefone: z.string().length(11, "O WhatsApp deve ter exatamente 11 números (com DDD)."),
-  tipo_imovel: z.enum(["casa", "apartamento"], {
-    message: "Por favor, selecione o tipo de imóvel.",
-  })
+  numero: z.string().min(8, "O número deve ter no mínimo 8 dígitos.").max(20, "O número deve ter no máximo 20 dígitos."),
+  imovel_interesse: z.string().min(1, "Por favor, informe o imóvel de interesse.").max(200, "Máximo de 200 caracteres.")
 });
 
 export type FormData = z.infer<typeof leadSchema>;
@@ -14,6 +12,6 @@ export type FormData = z.infer<typeof leadSchema>;
 export type FormErrors = {
   nome?: string;
   email?: string;
-  telefone?: string;
-  tipo_imovel?: string;
+  numero?: string;
+  imovel_interesse?: string;
 };

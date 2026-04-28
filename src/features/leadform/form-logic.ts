@@ -21,10 +21,10 @@ export const useLeadForm = () => {
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.replace(/\D/g, '').slice(0, 11);
-    setFormData((prev) => ({ ...prev, telefone: value }));
+    const value = e.target.value.replace(/\D/g, '').slice(0, 20);
+    setFormData((prev) => ({ ...prev, numero: value }));
     
-    if (errors.telefone) setErrors((prev) => ({ ...prev, telefone: undefined }));
+    if (errors.numero) setErrors((prev) => ({ ...prev, numero: undefined }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,29 +40,35 @@ export const useLeadForm = () => {
       setErrors({
         nome: fieldErrors.nome?.[0],
         email: fieldErrors.email?.[0],
-        telefone: fieldErrors.telefone?.[0],
-        tipo_imovel: fieldErrors.tipo_imovel?.[0],
+        numero: fieldErrors.numero?.[0],
+        imovel_interesse: fieldErrors.imovel_interesse?.[0],
       });
       setIsLoading(false);
       return;
     }
 
     try {
-      const { error } = await supabase
-        .from('leads')
-        .insert([{
-          nome: result.data.nome,
-          email: result.data.email,
-          telefone: result.data.telefone,
-          tipo_imovel: result.data.tipo_imovel
-        }]);
+      const sanitizedData = {
+        nome: result.data.nome.trim(),
+        email: result.data.email.trim().toLowerCase(),
+        numero: result.data.numero.replace(/\D/g, ''),
+        imovel_interesse: result.data.imovel_interesse.trim()
+      };
 
-      if (error) throw error;
+      const { error } = await supabase
+        .from('leads_lp_habit')
+        .insert([sanitizedData]);
+
+      if (error) {
+        if (error.code === '23505') {
+          throw new Error('Você já demonstrou interesse, em breve entraremos em contato.');
+        }
+        throw new Error('Erro ao enviar. Tente novamente em instantes.');
+      }
       
       navigate('/obrigado');
     } catch (err: any) {
-      console.error('Supabase Error:', err);
-      setSubmitError(err.message || 'Erro ao enviar dados. Tente novamente.');
+      setSubmitError(err.message || 'Erro ao enviar. Tente novamente em instantes.');
     } finally {
       setIsLoading(false);
     }

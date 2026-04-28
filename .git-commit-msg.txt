@@ -1,6 +1,0 @@
-chore: remove .env.local do tracking do git e adiciona .env.example
-
-- Remove .env.local do tracking (segurança)
-- Reforça .gitignore com padrões .env
-- Adiciona .env.example como referência sem valores reais
-- O conteúdo real do .env.local não foi alterado e continua localmente
